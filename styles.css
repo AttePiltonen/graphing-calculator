@@ -1,0 +1,21 @@
+* {
+    background-color: rgb(161, 153, 153);
+}
+
+.display-container {
+    display: flex;
+    justify-content: center;
+}
+
+.display {
+    display: flex;
+    justify-content: right;
+    background-color: lightseagreen;
+    text-align: right;
+    width: 200px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}

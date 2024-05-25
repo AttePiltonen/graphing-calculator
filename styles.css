@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: navajowhite;
+    background-color: slategray;
 }
 
 .calculator-container {
@@ -24,6 +24,7 @@ body {
     background-color: lightseagreen;
     padding: 15px 5px;
     margin: 10px;
+    border-radius: 5px;
 }
 
 .calculation, .solution {

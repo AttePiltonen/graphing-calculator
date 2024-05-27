@@ -66,11 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 operationActive = false;
             }
             if (value === 'DEL') {
-                displaySolution.textContent = displaySolution.textContent.slice(0, -1);
-                if (operationActive) {
-                    num2 = num2.slice(0, -1);
+                if (displaySolution.textContent.length !== 1) {
+                    displaySolution.textContent = displaySolution.textContent.slice(0, -1);
+                    if (operationActive) {
+                        num2 = num2.slice(0, -1);
+                    } else {
+                        num1 = num1.slice(0, -1);
+                    }
                 } else {
-                    num1 = num1.slice(0, -1);
+                    displaySolution.textContent = '0';
+                    if (operationActive) {
+                        num2 = '0';
+                    } else {
+                        num1 = '0';
+                    }
                 }
             }
             if (value === '.') {

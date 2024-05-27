@@ -27,10 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
     
-    //const displayCalculation = document.querySelector('.calculation');
     const displaySolution = document.querySelector('.solution');
-    //let calculation = '';
-    //let solution = '';
     let num1 = num2 = 0;
     let operation;
     const operation_obj = {'+':add, '-':subtract, 'X':multiply, '/':divide};
@@ -41,9 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target.tagName === 'BUTTON') {
             const value = event.target.textContent;
             if (numberVals.includes(value)) {
-                //displaySolution.textContent += value;
                 if (operationActive) {
-                    if (num2) {
+                    if (Number(num2)) {
                         num2 += value;
                         displaySolution.textContent += value;
                     } else {
@@ -51,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         displaySolution.textContent = value;
                     }
                 } else {
-                    if (num1) {
+                    if (Number(num1)) {
                         num1 += value;
                         displaySolution.textContent += value;
                     } else {
@@ -93,26 +89,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             if (value in operation_obj) {
-                operation = operation_obj[value];
-                operationActive = true;
-                //displaySolution.textContent = value;
                 if (num2) {
                     result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = num1 = result;
-                    num2 = 0;    
+                    displaySolution.textContent = parseInt(result) === result ? result : result.toFixed(5);
+                    num1 = result;
+                    num2 = 0;
+                    operation = operation_obj[value];
+                    operationActive = true;
+                } else {
+                    operation = operation_obj[value];
+                    operationActive = true;
                 }
             }
             if (value === '=') {
                 if (num2) {
                     result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = num1 = result;
+                    displaySolution.textContent = parseInt(result) === result ? result : result.toFixed(5);
+                    num1 = result;
                     num2 = 0;
                 }
-                //operationActive = false;
             }
-            //if (!(value in operation_obj)) {
-            //   operationActive = false;
-            //}
         };
     });
 

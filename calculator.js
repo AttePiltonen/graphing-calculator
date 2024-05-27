@@ -65,9 +65,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 displaySolution.textContent = 0;
                 operationActive = false;
             }
+            if (value === 'DEL') {
+                displaySolution.textContent = displaySolution.textContent.slice(0, -1);
+                if (operationActive) {
+                    num2 = num2.slice(0, -1);
+                } else {
+                    num1 = num1.slice(0, -1);
+                }
+            }
             if (value === '.') {
                 if (!displaySolution.textContent.includes('.')) {
-                    displaySolution.textContent += '.'
+                    displaySolution.textContent += '.';
+                    if (operationActive) {
+                        num2 += '.';
+                    } else {
+                        num1 += '.';
+                    }
                 }
             }
             if (value in operation_obj) {

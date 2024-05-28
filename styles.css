@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: slategray;
+    background-color: lightblue;
 }
 
 .calculator-container {
@@ -18,6 +18,10 @@ body {
     padding: 10px;
     border: 2px solid white;
     border-radius: 5px;
+    height: 513px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .display-container {
@@ -25,20 +29,18 @@ body {
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    width: 250px;
     height: 50px;
     background-color: lightseagreen;
     padding: 15px 5px;
     margin: 10px;
+    border: 2px solid grey;
     border-radius: 5px;
 }
 
-.calculation, .solution {
-    width: 100%;
-}
-
 .solution {
+    width: 100%;
     text-align: right;
+    font-size: 32px;
 }
 
 .buttons-container {
@@ -46,13 +48,9 @@ body {
     justify-content: center;
 }
 
-.first-row, .second-row, .third-row{
+.row{
     display: flex;
     justify-content: space-between;
-}
-
-.fourth-row {
-    display: flex;
 }
 
 #zero {
@@ -60,7 +58,18 @@ body {
 }
 
 button {
-    width: 40px;
-    height: 40px;
+    width: 92px;
+    height: 77px;
     margin: 2px;
+    border: 0;
+    border-radius: 2px;
+    font-size: 26px;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.orange {
+    background-color: orange;
 }

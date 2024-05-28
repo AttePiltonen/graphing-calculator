@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.display-container {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -40,9 +46,17 @@ body {
     justify-content: center;
 }
 
-.first-row, .second-row, .third-row, .fourth-row {
+.first-row, .second-row, .third-row{
     display: flex;
     justify-content: space-between;
+}
+
+.fourth-row {
+    display: flex;
+}
+
+#zero {
+    flex-grow: 4;
 }
 
 button {

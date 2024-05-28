@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
         return operation(a, b);
         } catch (e) {
-            //do nothing if user presses = when no numbers pressed
+            //do nothing if user presses = when no numbers are pressed
             return 0;
         }
       };
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const value = event.target.textContent;
             if (numberVals.includes(value)) {
                 if (operationActive) {
-                    if (Number(num2)) {
+                    if (Number(num2) || num2 === '0.') {
                         num2 += value;
                         displaySolution.textContent += value;
                     } else {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         displaySolution.textContent = value;
                     }
                 } else {
-                    if (Number(num1)) {
+                    if (Number(num1) || num1 === '0.') {
                         num1 += value;
                         displaySolution.textContent += value;
                     } else {
@@ -79,19 +79,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             if (value === '.') {
-                if (!displaySolution.textContent.includes('.')) {
-                    displaySolution.textContent += '.';
-                    if (operationActive) {
-                        num2 += '.';
+                if (operationActive) {
+                    if (Number(num2)) {
+                        if (!displaySolution.textContent.includes('.')) {
+                            num2 += '.';
+                            displaySolution.textContent += '.';
+                        }
                     } else {
+                        num2 = '0.'
+                        displaySolution.textContent = '0.'
+                    }
+                } else {
+                    if (!displaySolution.textContent.includes('.')) {
                         num1 += '.';
+                        displaySolution.textContent += '.';
                     }
                 }
             }
             if (value in operation_obj) {
                 if (num2) {
                     result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = parseInt(result) === result ? result : result.toFixed(5);
+                    displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);
                     num1 = result;
                     num2 = 0;
                     operation = operation_obj[value];
@@ -104,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (value === '=') {
                 if (num2) {
                     result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = parseInt(result) === result ? result : result.toFixed(5);
+                    displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);
                     num1 = result;
                     num2 = 0;
                 }

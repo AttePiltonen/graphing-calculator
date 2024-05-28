@@ -117,6 +117,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     num2 = 0;
                 }
             }
+            if (value === '+/-') {
+                if (operationActive) {
+                    if (Number(num2)) {
+                        num2 = displaySolution.textContent = '-' + num2;
+                }
+                } else {
+                    if (Number(num1)) {
+                        num1 = displaySolution.textContent = '-' + num1;
+                    } 
+                }
+            }
         };
     });
 

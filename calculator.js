@@ -26,17 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return 0;
         }
       };
-    
-    const displaySolution = document.querySelector('.solution');
+
+    let displaySolution = document.querySelector('.solution');
     let num1 = num2 = 0;
     let operation;
-    const operation_obj = {'+':add, '-':subtract, 'X':multiply, '/':divide};
+    const operation_obj = {'+':add, '-':subtract, '×':multiply, '/':divide};
     const numberVals = '00123456789';
     let operationActive = false;
 
     document.querySelector('.buttons-container').addEventListener('click', function(event) {
         if (event.target.tagName === 'BUTTON') {
+
             const value = event.target.textContent;
+            
             if (numberVals.includes(value)) {
                 if (operationActive) {
                     if (Number(num2) || num2 === '0.') {
@@ -112,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (value === '=') {
                 if (num2) {
                     result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);
+                    displaySolution.textContent = parseInt(result) === result || result === 'Math ERROR' ? result : +result.toFixed(5);
+                    operation = '';
                     num1 = result;
                     num2 = 0;
                 }

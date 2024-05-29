@@ -1,46 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-.display-container {
-    font-family: 'Roboto', sans-serif;
-}
-
 body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
     background-color: lightblue;
+    font-family: monospace, sans-serif;
 }
 
 .calculator-container {
     background-color: black;
-    padding: 10px;
+    padding: 20px;
     border: 2px solid white;
-    border-radius: 5px;
-    height: 513px;
+    border-radius: 20px;
     width: 400px;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 .display-container {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    align-items: center;
-    height: 50px;
+    justify-content: center;
+    align-items: flex-end;
     background-color: lightseagreen;
-    padding: 15px 5px;
-    margin: 10px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
     border: 2px solid grey;
     border-radius: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex-grow: 1;
 }
 
 .solution {
     width: 100%;
     text-align: right;
-    font-size: 32px;
+    font-size: 40px;
+    line-height: 1.2;
 }
 
 .buttons-container {
@@ -48,22 +48,29 @@ body {
     justify-content: center;
 }
 
-.row{
+.buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
     display: flex;
     justify-content: space-between;
 }
 
 #zero {
-    flex-grow: 4;
+    flex-grow: 2;
 }
 
 button {
-    width: 92px;
+    width: 96px;
     height: 77px;
     margin: 2px;
     border: 0;
     border-radius: 2px;
     font-size: 26px;
+    font-family: monospace;
 }
 
 .grey {

@@ -4,10 +4,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    height: 75vh;
     margin: 0;
     background-color: lightblue;
     font-family: monospace, sans-serif;
+    overflow: hidden;
 }
 
 .calculator-container {
@@ -79,4 +81,17 @@ button {
 
 .orange {
     background-color: orange;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
 }

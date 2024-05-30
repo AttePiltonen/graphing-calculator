@@ -84,7 +84,7 @@ button {
     border-radius: 2px;
     font-size: 26px;
     font-family: monospace;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 button.pressed {
@@ -106,7 +106,6 @@ button.active {
 footer {
     position: absolute;
     bottom: 0;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;

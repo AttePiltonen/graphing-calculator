@@ -131,33 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     } 
                 }
             }
+            // Button press effect
+            event.target.classList.add('pressed');
+            setTimeout(() => {
+                event.target.classList.remove('pressed');
+            }, 50);
         };
     });
-
-    // document.querySelector('.buttons-container').addEventListener('click', function(event) {
-    //     if (event.target.tagName === 'BUTTON') {
-    //         const value = event.target.textContent;
-
-    //         if (value === 'DEL') {
-    //             calculation = calculation.slice(0, -1);
-    //         } else if (value === 'AC') {
-    //             calculation = '';
-    //             solution = '';
-    //         } else if (value === '=') {
-    //             try {
-    //                 solution = '';
-    //                 calculation = solution;
-    //             } catch (e) {
-    //                 solution = 'Error';
-    //             }
-    //         } else if (value === 'ANS') {
-    //             calculation += solution;
-    //         } else {
-    //             calculation += value;
-    //         }
-
-    //         displayCalculation.textContent = calculation;
-    //         displaySolution.textContent = solution;
-    //     }
-    //});
 });

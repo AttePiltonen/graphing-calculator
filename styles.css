@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: monospace, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -9,7 +19,7 @@ body {
     margin: 0;
     background-color: lightblue;
     font-family: monospace, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .calculator-container {
@@ -29,9 +39,9 @@ body {
     justify-content: center;
     align-items: flex-end;
     background-color: lightseagreen;
-    padding: 15px 10px;
+    padding: 15px 16px;
     margin-bottom: 10px;
-    border: 2px solid grey;
+    border: 2px solid lightgray;
     border-radius: 5px;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -54,6 +64,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .row {
@@ -73,6 +84,15 @@ button {
     border-radius: 2px;
     font-size: 26px;
     font-family: monospace;
+    transition: background-color 0.3s ease;
+}
+
+button.pressed {
+    background-color: darkgrey;
+}
+
+button.active {
+    background-color: darkorange;
 }
 
 .grey {
@@ -83,7 +103,7 @@ button {
     background-color: orange;
 }
 
-.footer {
+footer {
     position: absolute;
     bottom: 0;
     left: 0;

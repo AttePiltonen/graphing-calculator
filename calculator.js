@@ -89,19 +89,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Handle operation buttons (+, -, ×, /)
+            // Handle operation buttons (+, -, ×, ÷)
             if (value in operation_obj) {
                 if (num2 !== '0') {
                     const result = operate(Number(num1), Number(num2), operation);
                     displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);
                     num1 = result;
                     num2 = '0';
-                    operation = operation_obj[value];
-                    operationActive = true;
-                } else {
-                    operation = operation_obj[value];
-                    operationActive = true;
                 }
+                operation = operation_obj[value];
+                operationActive = true;
                 if (activeOperationButton) {
                     activeOperationButton.classList.remove('active');
                 }
@@ -136,13 +133,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             }
+
             // Button press effect
             if (!(value in operation_obj)) {
                 event.target.classList.add('pressed');
                 setTimeout(() => {
                     event.target.classList.remove('pressed');
                 }, 75);
-            } 
+            } else {
+                if (activeOperationButton) {
+                    activeOperationButton.classList.remove('active');
+                }
+                activeOperationButton = event.target;
+                activeOperationButton.classList.add('active');
+            }
         }
     });
 });

@@ -41,21 +41,25 @@ document.addEventListener('DOMContentLoaded', function() {
             // Handle number and decimal inputs
             if (numberVals.includes(value) || value === '.') {
                 if (operationActive) {
-                    if (num2 !== '0' || num2 === '0.') {
+                    if (value === '.' && num2.includes('.')) return; // Prevent multiple decimals in num2
+                    if (num2 === '0' && value === '.') {
+                        num2 = '0.';
+                    } else if (num2 !== '0' || num2 === '0.') {
                         num2 += value;
-                        displaySolution.textContent = num2;
                     } else {
                         num2 = value;
-                        displaySolution.textContent = num2;
                     }
+                    displaySolution.textContent = num2;
                 } else {
-                    if (num1 !== '0' || num1 === '0.') {
+                    if (value === '.' && num1.includes('.')) return; // Prevent multiple decimals in num1
+                    if (num1 === '0' && value === '.') {
+                        num1 = '0.';
+                    } else if (num1 !== '0' || num1 === '0.') {
                         num1 += value;
-                        displaySolution.textContent = num1;
                     } else {
                         num1 = value;
-                        displaySolution.textContent = num1;
                     }
+                    displaySolution.textContent = num1;
                 }
             }
 
@@ -63,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (value === 'AC') {
                 num1 = num2 = '0';
                 displaySolution.textContent = '0';
-                operationActive = false;
+                operationActive = false;  // Reset operation state
                 if (activeOperationButton) {
                     activeOperationButton.classList.remove('active');
                     activeOperationButton = null;
@@ -91,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Handle operation buttons (+, -, ×, ÷)
             if (value in operation_obj) {
-                if (num2 !== '0') {
+                if (num2 !== '0' || num1 === '0') {  // Ensure operations can proceed with num1 as '0'
                     const result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);
+                    displaySolution.textContent = parseInt(result) === result ? result : +result.toFixed(5);  // Handle floating-point precision
                     num1 = result;
                     num2 = '0';
                 }
@@ -108,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Handle equals button (=)
             if (value === '=') {
-                if (num2 !== '0') {
+                if (num2 !== '0' || num1 === '0') {  // Ensure operations can proceed with num1 as '0'
                     const result = operate(Number(num1), Number(num2), operation);
-                    displaySolution.textContent = parseInt(result) === result || result === 'Math ERROR' ? result : +result.toFixed(5);
+                    displaySolution.textContent = parseInt(result) === result || result === 'Math ERROR' ? result : +result.toFixed(5);  // Handle floating-point precision
                     operation = null;
                     num1 = result;
                     num2 = '0';
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         activeOperationButton.classList.remove('active');
                         activeOperationButton = null;
                     }
+                    operationActive = false;  // Reset operation state after equals
                 }
             }
 

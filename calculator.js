@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numberVals = '0123456789';
     let operationActive = false;
     let activeOperationButton = null;
+    let newOperation = false; // Flag to check if a new operation starts
 
     document.querySelector('.buttons-container').addEventListener('click', function(event) {
         if (event.target.tagName === 'BUTTON') {
@@ -40,6 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Handle number and decimal inputs
             if (numberVals.includes(value) || value === '.') {
+                if (newOperation) {
+                    num1 = num2 = '0';
+                    newOperation = false;
+                }
                 if (operationActive) {
                     if (value === '.' && num2.includes('.')) return; // Prevent multiple decimals in num2
                     if (num2 === '0' && value === '.') {
@@ -123,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         activeOperationButton = null;
                     }
                     operationActive = false;  // Reset operation state after equals
+                    newOperation = true; // Indicate a new operation should start
                 }
             }
 
